@@ -186,7 +186,6 @@ Pong = {
   sensorInput: function(on) { this.cfg.sensorinput = on; },
   maxLumen: function(val) { this.cfg.maxLumen = val; },
   minLumen: function(val) { this.cfg.minLumen = val; },
-  sense: function(val) { this.cfg.sensorReading = val; },
 
   //=============================================================================
   // MENU
