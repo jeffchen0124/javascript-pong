@@ -125,7 +125,7 @@ Pong = {
         //var newY = ((this.cfg.sensorReading-this.cfg.minLumen)/(this.cfg.maxLumen-this.cfg.minLumen)*(this.leftPaddle.maxY-this.leftPaddle.minY)+this.leftPaddle.minY);
         //this.leftPaddle.setPos(this.leftPaddle.x, newY);
         //}
-        this.leftPaddle.update(dt, this.ball);
+        //this.leftPaddle.update(dt, this.ball);
       }
     }
     this.rightPaddle.update(dt, this.ball);
