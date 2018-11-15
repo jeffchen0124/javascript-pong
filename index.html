@@ -58,6 +58,11 @@
       <label for='predictions'>predictions: </label>
       <input type='checkbox' id='predictions'>
     </div>
+    
+    <div class='settings'>
+      <label for='sensorinput'>Sensor Input: </label>
+      <input type='checkbox' id='sensorinput'>
+    </div>
 
   </div>
 
@@ -77,22 +82,25 @@
     var stats       = document.getElementById('stats');
     var footprints  = document.getElementById('footprints');
     var predictions = document.getElementById('predictions');
+    var sensorinput = document.getElementById('sensorinput');
 
     var pong = Game.start('game', Pong, {
       sound:       sound.checked,
       stats:       stats.checked,
       footprints:  footprints.checked,
-      predictions: predictions.checked
+      predictions: predictions.checked,
+      sensorinput: sensorinput.checked
     });
 
     Game.addEvent(sound,       'change', function() { pong.enableSound(sound.checked);           });
     Game.addEvent(stats,       'change', function() { pong.showStats(stats.checked);             });
     Game.addEvent(footprints,  'change', function() { pong.showFootprints(footprints.checked);   });
     Game.addEvent(predictions, 'change', function() { pong.showPredictions(predictions.checked); });
+    Game.addEvent(sensorinput, 'change', function() { pong.sensorInput(sensorinput.checked); });
     
     var sensor = new AmbientLightSensor();
     sensor.addEventListener("reading", function (event) {
-      window.alert(sensor.illuminance);
+      //window.alert(sensor.illuminance);
     });
     sensor.start();
 
