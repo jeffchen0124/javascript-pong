@@ -96,7 +96,7 @@
       sensorinput: sensorinput.checked,
       maxLumen: 30,
       minLumen: 0,
-      sensorReading: 30,
+      sensorReading: 15,
     });
     
     
@@ -113,7 +113,9 @@
     Game.addEvent(buttonMax, 'click', function() { pong.maxLumen(lastLumen); window.alert(pong.cfg.maxLumen); });
     Game.addEvent(buttonMin, 'click', function() { pong.minLumen(lastLumen); window.alert(pong.cfg.minLumen); });
     
-    
+    sensor.addEventListener("reading", function (event) {
+      pong.cfg.sensorReading = sensor.illuminance;
+    });
 
 
   });
