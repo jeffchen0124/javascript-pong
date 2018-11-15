@@ -121,8 +121,10 @@ Pong = {
     if (this.leftPaddle.auto == true || this.cfg.sensorinput == false) {
       this.leftPaddle.update(dt, this.ball, false);
     } else {
+      if (this.cfg.maxLume != 0) {
       var newY = ((this.cfg.sensorReading-this.cfg.minLumen)/(this.cfg.maxLumen-this.cfg.minLumen)*(this.leftPaddle.maxY-this.leftPaddle.minY)+this.leftPaddle.minY);
       this.leftPaddle.setPos(this.leftPaddle.x, newY);
+      }
     }
     this.rightPaddle.update(dt, this.ball, false);
     if (this.playing) {
