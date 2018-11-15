@@ -98,7 +98,6 @@
     
     sensor.addEventListener("reading", function (event) {
       lastLumen = sensor.illuminance;
-      pong.sense = lastLumen;
     });
 
     Game.addEvent(sound,       'change', function() { pong.enableSound(sound.checked);           });
