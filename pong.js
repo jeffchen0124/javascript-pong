@@ -175,6 +175,8 @@ Pong = {
   showPredictions: function(on) { this.cfg.predictions = on; },
   enableSound:     function(on) { this.cfg.sound = on; },
   sensorInput: function(on) { this.cfg.sensorinput = on; },
+  maxLumen: function(val) { this.cfg.maxLumen = val; },
+  minLumen: function(val) { this.cfg.minLumen = val; },
 
   //=============================================================================
   // MENU
