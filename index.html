@@ -27,8 +27,9 @@
       </p>
       <p>
         Press <button id='button1'>Click me</button> for a single player game.<br>
-        Press <b>2</b> for a double player game.<br>
-        Press <b>0</b> to watch the computer play itself.
+        Press <button id='button2'>Click me</button> for a double player game.<br>
+        Press <button id='button0'>Click me</button> to watch the computer play itself.
+        Press <button id='buttonExit'>Click me</button> to stop.
       </p>
       <p>
         Player 1 moves using the <b>Q</b> and <b>A</b> keys.<br>
@@ -88,8 +89,11 @@
     var footprints  = document.getElementById('footprints');
     var predictions = document.getElementById('predictions');
     var sensorinput = document.getElementById('sensorinput');
+    var button0 = document.getElementById('button0');
     var button1 = document.getElementById('button1');
-
+    var button2 = document.getElementById('button2');
+    var buttonExit = document.getElementById('buttonExit');
+    
     var pong = Game.start('game', Pong, {
       sound:       sound.checked,
       stats:       stats.checked,
@@ -103,7 +107,10 @@
     Game.addEvent(footprints,  'change', function() { pong.showFootprints(footprints.checked);   });
     Game.addEvent(predictions, 'change', function() { pong.showPredictions(predictions.checked); });
     Game.addEvent(sensorinput, 'change', function() { pong.sensorInput(sensorinput.checked); });
-    Game.addEvent(button1, 'click', function() { pong.startDemo(); });
+    Game.addEvent(button0, 'click', function() { pong.startDemo(); });
+    Game.addEvent(button1, 'click', function() { pong.startSinglePlayer(); });
+    Game.addEvent(button2, 'click', function() { pong.startDoublePlayer(); });
+    Game.addEvent(buttonExit, 'click', function() { pong.stop(); });
     
     var sensor = new AmbientLightSensor();
     sensor.addEventListener("reading", function (event) {
