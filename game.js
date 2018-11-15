@@ -193,7 +193,7 @@ Game = {
     initialize: function(id, game, cfg) {
       this.cfg          = Object.extend(game.Defaults || {}, cfg || {}); // use game defaults (if any) and extend with custom cfg (if any)
       this.fps          = 240;
-      this.interval     = 1000.0 / this.fps;
+      this.interval     = 10000.0 / this.fps;
       this.canvas       = document.getElementById(id);
       this.width        = this.cfg.width  || this.canvas.offsetWidth;
       this.height       = this.cfg.height || this.canvas.offsetHeight;
