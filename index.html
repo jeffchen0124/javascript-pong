@@ -85,9 +85,9 @@
     
     sensor.start();
     
-    sensor.addEventListener("reading", function (event) {
-      lastLumen = sensor.illuminance;
-    });
+    //sensor.addEventListener("reading", function (event) {
+    //  lastLumen = sensor.illuminance;
+    //});
     
     var pong = Game.start('game', Pong, {
       sound:       sound.checked,
