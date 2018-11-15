@@ -103,7 +103,7 @@
     Game.addEvent(footprints,  'change', function() { pong.showFootprints(footprints.checked);   });
     Game.addEvent(predictions, 'change', function() { pong.showPredictions(predictions.checked); });
     Game.addEvent(sensorinput, 'change', function() { pong.sensorInput(sensorinput.checked); });
-    Game.addEvent(button1, 'onclick', function() { pong.startDemo(); });
+    Game.addEvent(button1, 'click', function() { pong.startDemo(); });
     
     var sensor = new AmbientLightSensor();
     sensor.addEventListener("reading", function (event) {
