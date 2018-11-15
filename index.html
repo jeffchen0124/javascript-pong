@@ -83,7 +83,10 @@
     var lastLumen = 0;
 
     sensor.start();
- 
+    
+    sensor.addEventListener("reading", function (event) {
+      lastLumen = sensor.illuminance;
+    });
     
     var pong = Game.start('game', Pong, {
       sound:       sound.checked,
@@ -93,12 +96,9 @@
       sensorinput: sensorinput.checked,
       maxLumen: 0,
       minLumen: 0,
-      sensorReading: 0
     });
     
-    sensor.addEventListener("reading", function (event) {
-      lastLumen = sensor.illuminance;
-    });
+    
 
     Game.addEvent(sound,       'change', function() { pong.enableSound(sound.checked);           });
     Game.addEvent(stats,       'change', function() { pong.showStats(stats.checked);             });
