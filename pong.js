@@ -377,7 +377,7 @@ Pong = {
           this.setpos(this.x, y);
         }
       } else {
-        var y = this.maxY;
+        var y = this.minY;
         this.setpos(this.x, y);
       }
     },
