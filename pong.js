@@ -388,8 +388,13 @@ Pong = {
         this.setpos(this.x, y);
       }
       
-      if (light && (newY > this.y || newY < this.y))
+      if (light && (newY > this.y || newY < this.y)) {
+        if (newY < this.minY)
+          newY = this.minY;
+        else if (newY > this.maxY)
+          newY = this.maxY;
         this.setpos(this.x, newY);
+      }
     
     },
 
