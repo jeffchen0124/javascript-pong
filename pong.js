@@ -121,7 +121,8 @@ Pong = {
     var newY = ((this.cfg.sensorReading-this.cfg.minLumen)/(this.cfg.maxLumen-this.cfg.minLumen)*(this.leftPaddle.maxY-this.leftPaddle.minY)+this.leftPaddle.minY);
     
     if (this.leftPaddle.auto == true || this.cfg.sensorinput == false)
-      this.leftPaddle.update(dt, this.ball, -1);
+      this.leftPaddle.update(dt, this.ball, newY, false);
+
     //else {
         //if (this.cfg.maxLumen != 0) {
     
@@ -132,7 +133,7 @@ Pong = {
         //this.leftPaddle.update(dt, this.ball);
      // }
    // };
-    this.rightPaddle.update(dt, this.ball, -1);
+    this.rightPaddle.update(dt, this.ball, newY, false);
     if (this.playing) {
       var dx = this.ball.dx;
       var dy = this.ball.dy;
@@ -371,13 +372,13 @@ Pong = {
         this.level = Pong.Levels[level];
     },
 
-    update: function(dt, ball, newY) {
+    update: function(dt, ball, newY, light) {
  
       if (this.auto)
         this.ai(dt, ball);
 
       var amount = this.down - this.up;
-      if (amount != 0) {
+      if (amount != 0 && !light) {
         var y = this.y + (amount * dt * this.speed);
         if (y < this.minY)
           y = this.minY;
@@ -385,6 +386,9 @@ Pong = {
           y = this.maxY;
         this.setpos(this.x, y);
       }
+      
+      if (light && (newY > this.y || newY < this.y))
+        this.setpos(this.x, newY);
     
     },
 
