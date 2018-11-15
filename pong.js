@@ -118,8 +118,12 @@ Pong = {
   },
 
   update: function(dt) {
-    this.leftPaddle.update(dt, this.ball);
-    this.rightPaddle.update(dt, this.ball);
+    if (this.leftPaddle.auto == true || this.cfg.sensorinput == false) {
+      this.leftPaddle.update(dt, this.ball, false);
+    } else {
+      this.leftPaddle.update(dt, this.ball, true);
+    }
+    this.rightPaddle.update(dt, this.ball, false);
     if (this.playing) {
       var dx = this.ball.dx;
       var dy = this.ball.dy;
@@ -358,10 +362,10 @@ Pong = {
         this.level = Pong.Levels[level];
     },
 
-    update: function(dt, ball) {
+    update: function(dt, ball, sensetype) {
       if (this.auto)
         this.ai(dt, ball);
-
+      
       var amount = this.down - this.up;
       if (amount != 0) {
         var y = this.y + (amount * dt * this.speed);
