@@ -121,7 +121,8 @@ Pong = {
     if (this.leftPaddle.auto == true || this.cfg.sensorinput == false) {
       this.leftPaddle.update(dt, this.ball, false);
     } else {
-      this.leftPaddle.update(dt, this.ball, true);
+      var newY = ((this.cfg.sensorReading-this.cfg.minLumen)/(this.cfg.maxLumen-this.cfg.minLumen)*(this.leftPaddle.maxY-this.leftPaddle.minY)+this.leftPaddle.minY);
+      this.leftPaddle.setPos(this.leftPaddle.x, newY);
     }
     this.rightPaddle.update(dt, this.ball, false);
     if (this.playing) {
@@ -378,7 +379,7 @@ Pong = {
         }
       } else {
         if (this.maxLumen != 0) {
-          var y = this.minY;
+
           this.setpos(this.x, y);
         }
       }
