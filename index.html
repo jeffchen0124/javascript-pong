@@ -12,31 +12,16 @@
 
     <h2>This is Pong!</h2>
 
-    <ul class='parts'>
-      <li><a href='/' class='selected'>Full Game</a></li>
-      <li><a href='/part1'><i>game runner</i> - Part 1</a></li>
-      <li><a href='/part2'><i>bouncing ball</i> - Part 2</a></li>
-      <li><a href='/part3'><i>game loop</i> - Part 3</a></li>
-      <li><a href='/part4'><i>collision detection</i> - Part 4</a></li>
-      <li><a href='/part5'><i>computer AI</i> - Part 5</a></li>
-    </ul>
-
     <div class='description'>
       <p>
-        This is a javascript version of Pong.
-      </p>
-      <p>
         Press <button id='button1'>Click me</button> for a single player game.<br>
-        Press <button id='button2'>Click me</button> for a double player game.<br>
         Press <button id='button0'>Click me</button> to watch the computer play itself.
         Press <button id='buttonExit'>Click me</button> to stop.
       </p>
       <p>
-        Player 1 moves using the <b>Q</b> and <b>A</b> keys.<br>
-        Player 2 moves using the <b>P</b> and <b>L</b> keys.
-      </p>
-      <p>
-        <b>Esc</b> can be used to abandon a game.
+        Player moves using ambient light sensor.<br>
+        <button id='buttonMax'>Calibrate Max Lumen</button><br>
+        <button id='buttonMin'>Calibrate Min Lumen</button>
       </p>
     </div>
 
@@ -62,7 +47,7 @@
     
     <div class='settings'>
       <label for='sensorinput'>Sensor Input: </label>
-      <input type='checkbox' id='sensorinput'>
+      <input type='checkbox' id='sensorinput' checked>
     </div>
 
   </div>
@@ -93,13 +78,25 @@
     var button1 = document.getElementById('button1');
     var button2 = document.getElementById('button2');
     var buttonExit = document.getElementById('buttonExit');
+    var buttonMax = document.getElementById('buttonMax');
+    var buttonMin = document.getElementById('buttonMin');
+    var sensor = new AmbientLightSensor();
+    var lastLumen = 0;
+    
+    sensor.start();
+    
+    sensor.addEventListener("reading", function (event) {
+      lastLumen = sensor.illuminance;
+    });
     
     var pong = Game.start('game', Pong, {
       sound:       sound.checked,
       stats:       stats.checked,
       footprints:  footprints.checked,
       predictions: predictions.checked,
-      sensorinput: sensorinput.checked
+      sensorinput: sensorinput.checked,
+      maxLumen: 0,
+      minLumen: 0
     });
 
     Game.addEvent(sound,       'change', function() { pong.enableSound(sound.checked);           });
@@ -111,12 +108,10 @@
     Game.addEvent(button1, 'click', function() { pong.startSinglePlayer(); });
     Game.addEvent(button2, 'click', function() { pong.startDoublePlayer(); });
     Game.addEvent(buttonExit, 'click', function() { pong.stop(); });
+    Game.addEvent(buttonMax, 'click', function() { pong.maxLumen(lastLumen); alert(pong.cfg.maxLumen); });
+    Game.addEvent(buttonMin, 'click', function() { pong.minLumen(lastLumen); alert(pong.cfg.minLumen);});
     
-    var sensor = new AmbientLightSensor();
-    sensor.addEventListener("reading", function (event) {
-      //window.alert(sensor.illuminance);
-    });
-    sensor.start();
+
 
   });
   </script>
