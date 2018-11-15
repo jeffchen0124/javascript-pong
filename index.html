@@ -89,6 +89,11 @@
     Game.addEvent(stats,       'change', function() { pong.showStats(stats.checked);             });
     Game.addEvent(footprints,  'change', function() { pong.showFootprints(footprints.checked);   });
     Game.addEvent(predictions, 'change', function() { pong.showPredictions(predictions.checked); });
+    
+    //Test
+    Game.addEventListener('deviceproximity', function(event) {
+     console.log("value: " + event.value, "max: " + event.max, "min: " + event.min);
+    });
 
   });
   </script>
