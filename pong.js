@@ -118,7 +118,7 @@ Pong = {
   },
 
   update: function(dt) {
-    var newY = ((this.cfg.sensorReading-this.cfg.minLumen)/(this.cfg.maxLumen-this.cfg.minLumen)*(this.leftPaddle.maxY-this.leftPaddle.minY)+this.leftPaddle.minY);
+    var newY = (this.leftPaddle.maxY-(this.cfg.sensorReading-this.cfg.minLumen)/(this.cfg.maxLumen-this.cfg.minLumen)*(this.leftPaddle.maxY-this.leftPaddle.minY));
     
     if (this.leftPaddle.auto == true || this.cfg.sensorinput == false)
       this.leftPaddle.update(dt, this.ball, newY, false);
