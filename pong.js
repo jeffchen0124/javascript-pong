@@ -174,6 +174,7 @@ Pong = {
   showFootprints:  function(on) { this.cfg.footprints = on; this.ball.footprints = []; },
   showPredictions: function(on) { this.cfg.predictions = on; },
   enableSound:     function(on) { this.cfg.sound = on; },
+  sensorInput: function(on) { this.cfg.sensorinput = on; },
 
   //=============================================================================
   // MENU
