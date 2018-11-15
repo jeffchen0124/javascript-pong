@@ -76,7 +76,6 @@
     var sensorinput = document.getElementById('sensorinput');
     var button0 = document.getElementById('button0');
     var button1 = document.getElementById('button1');
-    var button2 = document.getElementById('button2');
     var buttonExit = document.getElementById('buttonExit');
     var buttonMax = document.getElementById('buttonMax');
     var buttonMin = document.getElementById('buttonMin');
@@ -106,7 +105,6 @@
     Game.addEvent(sensorinput, 'change', function() { pong.sensorInput(sensorinput.checked); });
     Game.addEvent(button0, 'click', function() { pong.startDemo(); });
     Game.addEvent(button1, 'click', function() { pong.startSinglePlayer(); });
-    Game.addEvent(button2, 'click', function() { pong.startDoublePlayer(); });
     Game.addEvent(buttonExit, 'click', function() { pong.stop(); });
     //Game.addEvent(buttonMax, 'click', function() { pong.maxLumen(lastLumen); });
     //Game.addEvent(buttonMin, 'click', function() { pong.minLumen(lastLumen); });
