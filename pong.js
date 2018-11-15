@@ -127,7 +127,7 @@ Pong = {
         //}
         this.leftPaddle.update(dt, this.ball);
       }
-    }
+    };
     this.rightPaddle.update(dt, this.ball);
     if (this.playing) {
       var dx = this.ball.dx;
