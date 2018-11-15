@@ -363,16 +363,21 @@ Pong = {
     },
 
     update: function(dt, ball, sensetype) {
-      if (this.auto)
-        this.ai(dt, ball);
-      
-      var amount = this.down - this.up;
-      if (amount != 0) {
-        var y = this.y + (amount * dt * this.speed);
-        if (y < this.minY)
-          y = this.minY;
-        else if (y > this.maxY)
-          y = this.maxY;
+      if (sensetype == false) {
+        if (this.auto)
+          this.ai(dt, ball);
+
+        var amount = this.down - this.up;
+        if (amount != 0) {
+          var y = this.y + (amount * dt * this.speed);
+          if (y < this.minY)
+            y = this.minY;
+          else if (y > this.maxY)
+            y = this.maxY;
+          this.setpos(this.x, y);
+        }
+      } else {
+        var y = this.maxY;
         this.setpos(this.x, y);
       }
     },
