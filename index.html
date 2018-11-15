@@ -82,11 +82,13 @@
     var sensor = new AmbientLightSensor();
     var lastLumen = 0;
     
-    sensor.start();
-    
-    //sensor.addEventListener("reading", function (event) {
-    //  lastLumen = sensor.illuminance;
-    //});
+    try {
+      sensor.start();
+
+      sensor.addEventListener("reading", function (event) {
+        lastLumen = sensor.illuminance;
+      });
+    }
     
     var pong = Game.start('game', Pong, {
       sound:       sound.checked,
@@ -106,8 +108,10 @@
     Game.addEvent(button0, 'click', function() { pong.startDemo(); });
     Game.addEvent(button1, 'click', function() { pong.startSinglePlayer(); });
     Game.addEvent(buttonExit, 'click', function() { pong.stop(); });
-    //Game.addEvent(buttonMax, 'click', function() { pong.maxLumen(lastLumen); });
-    //Game.addEvent(buttonMin, 'click', function() { pong.minLumen(lastLumen); });
+    try {
+      Game.addEvent(buttonMax, 'click', function() { pong.maxLumen(lastLumen); window.alert(pong.cfg.maxLumen); });
+      Game.addEvent(buttonMin, 'click', function() { pong.minLumen(lastLumen); window.alert(pong.cfg.minLumen); });
+    }
     
 
 
