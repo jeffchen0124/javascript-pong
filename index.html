@@ -87,6 +87,7 @@
     
     sensor.addEventListener("reading", function (event) {
       lastLumen = sensor.illuminance;
+      window.alert(lastLumen);
     });
     
     var pong = Game.start('game', Pong, {
@@ -108,8 +109,8 @@
     Game.addEvent(button1, 'click', function() { pong.startSinglePlayer(); });
     Game.addEvent(button2, 'click', function() { pong.startDoublePlayer(); });
     Game.addEvent(buttonExit, 'click', function() { pong.stop(); });
-    Game.addEvent(buttonMax, 'click', function() { pong.maxLumen(lastLumen); window.alert(pong.cfg.maxLumen); });
-    Game.addEvent(buttonMin, 'click', function() { pong.minLumen(lastLumen); window.alert(pong.cfg.minLumen);});
+    Game.addEvent(buttonMax, 'click', function() { pong.maxLumen(lastLumen); });
+    Game.addEvent(buttonMin, 'click', function() { pong.minLumen(lastLumen); });
     
 
 
