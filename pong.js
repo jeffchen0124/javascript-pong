@@ -118,19 +118,21 @@ Pong = {
   },
 
   update: function(dt) {
+    var newY = ((this.cfg.sensorReading-this.cfg.minLumen)/(this.cfg.maxLumen-this.cfg.minLumen)*(this.leftPaddle.maxY-this.leftPaddle.minY)+this.leftPaddle.minY);
+    
     if (this.leftPaddle.auto == true || this.cfg.sensorinput == false)
-      this.leftPaddle.update(dt, this.ball);
+      this.leftPaddle.update(dt, this.ball, -1);
     //else {
         //if (this.cfg.maxLumen != 0) {
-    var newY = ((this.cfg.sensorReading-this.cfg.minLumen)/(this.cfg.maxLumen-this.cfg.minLumen)*(this.leftPaddle.maxY-this.leftPaddle.minY)+this.leftPaddle.minY);
+    
     //window.alert(newY + " maxY: " + this.leftPaddle.maxY + " minY: " + this.leftPaddle.minY);
-    if (newY > this.leftPaddle.y || newY<this.leftPaddle.y)
-      this.leftPaddle.setPos(this.leftPaddle.x, newY);
+    //if (newY > this.leftPaddle.y || newY<this.leftPaddle.y)
+      //this.leftPaddle.setPos(this.leftPaddle.x, newY);
         //}
         //this.leftPaddle.update(dt, this.ball);
      // }
    // };
-    this.rightPaddle.update(dt, this.ball);
+    this.rightPaddle.update(dt, this.ball, -1);
     if (this.playing) {
       var dx = this.ball.dx;
       var dy = this.ball.dy;
@@ -369,7 +371,7 @@ Pong = {
         this.level = Pong.Levels[level];
     },
 
-    update: function(dt, ball) {
+    update: function(dt, ball, newY) {
  
       if (this.auto)
         this.ai(dt, ball);
