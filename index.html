@@ -26,7 +26,7 @@
         This is a javascript version of Pong.
       </p>
       <p>
-        Press <button onclick="myFunction()">Click me</button> for a single player game.<br>
+        Press <button id='button1'>Click me</button> for a single player game.<br>
         Press <b>2</b> for a double player game.<br>
         Press <b>0</b> to watch the computer play itself.
       </p>
@@ -78,9 +78,7 @@
   <script src="game.js" type="text/javascript"></script> 
   <script src="pong.js" type="text/javascript"></script>
   <script type="text/javascript">
-  function myFunction() {
-    Game.pong.onkeydown(Game.KEY.ONE);
-  }
+
   
   Game.ready(function() {
 
@@ -90,6 +88,7 @@
     var footprints  = document.getElementById('footprints');
     var predictions = document.getElementById('predictions');
     var sensorinput = document.getElementById('sensorinput');
+    var button1 = document.getElementById('button1');
 
     var pong = Game.start('game', Pong, {
       sound:       sound.checked,
@@ -104,6 +103,7 @@
     Game.addEvent(footprints,  'change', function() { pong.showFootprints(footprints.checked);   });
     Game.addEvent(predictions, 'change', function() { pong.showPredictions(predictions.checked); });
     Game.addEvent(sensorinput, 'change', function() { pong.sensorInput(sensorinput.checked); });
+    Game.addEvent(button1, 'onclick', function() { pong.startDemo(); });
     
     var sensor = new AmbientLightSensor();
     sensor.addEventListener("reading", function (event) {
