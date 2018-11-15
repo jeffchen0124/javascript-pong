@@ -122,7 +122,8 @@ Pong = {
     
     if (this.leftPaddle.auto == true || this.cfg.sensorinput == false)
       this.leftPaddle.update(dt, this.ball, newY, false);
-
+    else
+      this.leftPaddle.update(dt, this.ball, newY, true);
     //else {
         //if (this.cfg.maxLumen != 0) {
     
