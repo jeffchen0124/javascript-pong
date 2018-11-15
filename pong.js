@@ -118,6 +118,7 @@ Pong = {
   },
 
   update: function(dt) {
+    window.alert(this.cfg.sensorinput);
     if (this.leftPaddle.auto == true || this.cfg.sensorinput == false) {
       this.leftPaddle.update(dt, this.ball, false);
     } else {
