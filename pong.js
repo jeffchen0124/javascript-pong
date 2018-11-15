@@ -119,7 +119,6 @@ Pong = {
 
   update: function(dt) {
     if (this.leftPaddle.auto == true || this.cfg.sensorinput == false) {
-      window.alert("hi");
       this.leftPaddle.update(dt, this.ball, false);
     } else {
       this.leftPaddle.update(dt, this.ball, true);
@@ -378,8 +377,10 @@ Pong = {
           this.setpos(this.x, y);
         }
       } else {
-        var y = this.minY;
-        this.setpos(this.x, y);
+        if (this.maxLumen != 0) {
+          var y = this.minY;
+          this.setpos(this.x, y);
+        }
       }
     },
 
