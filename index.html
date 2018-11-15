@@ -110,8 +110,8 @@
     Game.addEvent(button1, 'click', function() { pong.startSinglePlayer(); });
     Game.addEvent(buttonExit, 'click', function() { pong.stop(); });
  
-    Game.addEvent(buttonMax, 'click', function() { pong.maxLumen(lastLumen); window.alert(pong.cfg.maxLumen); });
-    Game.addEvent(buttonMin, 'click', function() { pong.minLumen(lastLumen); window.alert(pong.cfg.minLumen); });
+    Game.addEvent(buttonMax, 'click', function() { pong.maxLumen(lastLumen); });
+    Game.addEvent(buttonMin, 'click', function() { pong.minLumen(lastLumen); });
     
     sensor.addEventListener("reading", function (event) {
       pong.cfg.sensorReading = sensor.illuminance;
