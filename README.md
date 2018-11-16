@@ -1,5 +1,7 @@
-Where: Fork of https://github.com/jakesgordon/javascript-pong. 
+Where: Fork of https://github.com/jakesgordon/javascript-pong.
+
 What: Code was used for the base gameplay and set up
+
 Why: So that we could focus on the input method and sensor testing rather than game mechanics.
 
 Canvas Pong
